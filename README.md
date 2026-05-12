@@ -1,6 +1,7 @@
 Duel Game
 
 Overview
+
 Simulation of a turn-based duel between two characters.
 
 Character Setup
