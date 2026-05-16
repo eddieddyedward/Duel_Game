@@ -72,170 +72,6 @@ def setup_fixed():
     print()
 
     if r == 1:
-        print(f"Round {n}:")
-        print("Character 1 attacks")
-
-        if sa1 == 2 and sa2 == 1 and random.random() < 0.0625:
-            print("Character 1 activates Power Strike")
-            print("Character 2 activates Damage Reduction")
-            h2 = power_reduction(ap1, dp2, h2)
-            check_both = 1
-
-        if check_both == 0:
-            if sa1 == 2 and random.random() < 0.25:
-                print("Character 1 activates Power Strike")
-                h2 = power_strike(ap1, dp2, h2)
-                check = 1
-            if sa2 == 1 and random.random() < 0.25 and check == 0:
-                print("Character 2 activates Damage Reduction")
-                h2 = damage_reduction(ap1, dp2, h2)
-                check = 1
-            # Ultimate Attack
-            if sa1 == 4 and random.random() < 0.01 and check == 0:
-                print("Character 1 activates Ultimate Attack")
-                h2 = ultimate_attack(h2)
-                check = 1
-
-        if check == 0 and check_both == 0:
-            print("No ability activated")
-            h2 = turns(ap1, dp2, h2)
-        else:
-            check = 0
-            check_both = 0
-
-        print(f"Character 2 has {h2} health")
-        print()
-        n += 1
-
-    else:
-        print(f"Round {n}:")
-        print("Character 2 attacks")
-
-        if sa2 == 2 and sa1 == 1 and random.random() < 0.0625:
-            print("Character 2 activates Power Strike")
-            print("Character 1 activates Damage Reduction")
-            h1 = power_reduction(ap2, dp1, h1)
-            check_both = 1
-
-        if check_both == 0:
-            if sa2 == 2 and random.random() < 0.25:
-                print("Character 2 activates Power Strike")
-                h1 = power_strike(ap2, dp1, h1)
-                check = 1
-            if sa1 == 1 and random.random() < 0.25 and check == 0:
-                print("Character 1 activates Damage Reduction")
-                h1 = damage_reduction(ap2, dp1, h1)
-                check = 1
-            # Ultimate Attack
-            if sa2 == 4 and random.random() < 0.01 and check == 0:
-                print("Character 2 activates Ultimate Attack")
-                h1 = ultimate_attack(h1)
-                check = 1
-
-        if check == 0 and check_both == 0:
-            print("No ability activated")
-            h1 = turns(ap2, dp1, h1)
-        else:
-            check = 0
-            check_both = 0
-
-        print(f"Character 1 has {h1} health")
-        print()
-        n += 1
-
-    if r == 1:
-        while h1 > 0 and h2 > 0:
-            print(f"Round {n}:")
-            print(f"Character 2 attacks")
-
-            if sa2 == 2 and sa1 == 1 and random.random() < 0.0625:
-                print("Character 2 activates Power Strike")
-                print("Character 1 activates Damage Reduction")
-                h1 = power_reduction(ap2, dp1, h1)
-                check_both = 1
-            if sa2 == 2 and sa1 == 3 and random.random() < 0.0625 and h1 < 30:
-                print("Character 2 activates Power Strike")
-                print("Character 1 activates Second Wind")
-                h1 = power_wind(ap2, dp1, h1)
-                check_both = 1
-
-            if check_both == 0:
-                if sa2 == 2 and random.random() < 0.25:
-                    print("Character 2 activates Power Strike")
-                    h1 = power_strike(ap2, dp1, h1)
-                    check = 1
-                if sa1 == 1 and random.random() < 0.25 and check == 0:
-                    print("Character 1 activates Damage Reduction")
-                    h1 = damage_reduction(ap2, dp1, h1)
-                    check = 1
-                if sa1 == 3 and random.random() < 0.25 and h1 < 30 and check == 0:
-                    print("Character 1 activates Second Wind")
-                    h1 = second_wind(ap2, dp1, h1)
-                    check = 1
-                # Ultimate Attack
-                if sa2 == 4 and random.random() < 0.01 and check == 0:
-                    print("Character 2 activates Ultimate Attack")
-                    h1 = ultimate_attack(h1)
-                    check = 1
-
-            if check == 0 and check_both == 0:
-                print("No ability activated")
-                h1 = turns(ap2, dp1, h1)
-            else:
-                check = 0
-                check_both = 0
-
-            print(f"Character 1 has {h1} health")
-            print()
-            n += 1
-
-            if h1 <= 0 or h2 <= 0:
-                break
-
-            print(f"Round {n}:")
-            print(f"Character 1 attacks")
-
-            if sa1 == 2 and sa2 == 1 and random.random() < 0.0625:
-                print("Character 1 activates Power Strike")
-                print("Character 2 activates Damage Reduction")
-                h2 = power_reduction(ap1, dp2, h2)
-                check_both = 1
-            if sa1 == 2 and sa2 == 3 and random.random() < 0.0625 and h2 < 30:
-                print("Character 1 activates Power Strike")
-                print("Character 2 activates Second Wind")
-                h2 = power_wind(ap1, dp2, h2)
-                check_both = 1
-
-            if check_both == 0:
-                if sa1 == 2 and random.random() < 0.25:
-                    print("Character 1 activates Power Strike")
-                    h2 = power_strike(ap1, dp2, h2)
-                    check = 1
-                if sa2 == 1 and random.random() < 0.25 and check == 0:
-                    print("Character 2 activates Damage Reduction")
-                    h2 = damage_reduction(ap1, dp2, h2)
-                    check = 1
-                if sa2 == 3 and random.random() < 0.25 and h2 < 30 and check == 0:
-                    print("Character 2 activates Second Wind")
-                    h2 = second_wind(ap1, dp2, h2)
-                    check = 1
-                # Ultimate Attack
-                if sa1 == 4 and random.random() < 0.01 and check == 0:
-                    print("Character 1 activates Ultimate Attack")
-                    h2 = ultimate_attack(h2)
-                    check = 1
-
-            if check == 0 and check_both == 0:
-                print("No ability activated")
-                h2 = turns(ap1, dp2, h2)
-            else:
-                check = 0
-                check_both = 0
-
-            print(f"Character 2 has {h2} health")
-            print()
-            n += 1
-    else:
         while h1 > 0 and h2 > 0:
             print(f"Round {n}:")
             print(f"Character 1 attacks")
@@ -325,6 +161,99 @@ def setup_fixed():
                 check_both = 0
 
             print(f"Character 1 has {h1} health")
+            print()
+            n += 1
+
+    else:
+        while h1 > 0 and h2 > 0:
+            print(f"Round {n}:")
+            print(f"Character 2 attacks")
+
+            if sa2 == 2 and sa1 == 1 and random.random() < 0.0625:
+                print("Character 2 activates Power Strike")
+                print("Character 1 activates Damage Reduction")
+                h1 = power_reduction(ap2, dp1, h1)
+                check_both = 1
+            if sa2 == 2 and sa1 == 3 and random.random() < 0.0625 and h1 < 30:
+                print("Character 2 activates Power Strike")
+                print("Character 1 activates Second Wind")
+                h1 = power_wind(ap2, dp1, h1)
+                check_both = 1
+
+            if check_both == 0:
+                if sa2 == 2 and random.random() < 0.25:
+                    print("Character 2 activates Power Strike")
+                    h1 = power_strike(ap2, dp1, h1)
+                    check = 1
+                if sa1 == 1 and random.random() < 0.25 and check == 0:
+                    print("Character 1 activates Damage Reduction")
+                    h1 = damage_reduction(ap2, dp1, h1)
+                    check = 1
+                if sa1 == 3 and random.random() < 0.25 and h1 < 30 and check == 0:
+                    print("Character 1 activates Second Wind")
+                    h1 = second_wind(ap2, dp1, h1)
+                    check = 1
+                # Ultimate Attack
+                if sa2 == 4 and random.random() < 0.01 and check == 0:
+                    print("Character 2 activates Ultimate Attack")
+                    h1 = ultimate_attack(h1)
+                    check = 1
+
+            if check == 0 and check_both == 0:
+                print("No ability activated")
+                h1 = turns(ap2, dp1, h1)
+            else:
+                check = 0
+                check_both = 0
+
+            print(f"Character 1 has {h1} health")
+            print()
+            n += 1
+
+            if h1 <= 0 or h2 <= 0:
+                break
+
+            print(f"Round {n}:")
+            print(f"Character 1 attacks")
+
+            if sa1 == 2 and sa2 == 1 and random.random() < 0.0625:
+                print("Character 1 activates Power Strike")
+                print("Character 2 activates Damage Reduction")
+                h2 = power_reduction(ap1, dp2, h2)
+                check_both = 1
+            if sa1 == 2 and sa2 == 3 and random.random() < 0.0625 and h2 < 30:
+                print("Character 1 activates Power Strike")
+                print("Character 2 activates Second Wind")
+                h2 = power_wind(ap1, dp2, h2)
+                check_both = 1
+
+            if check_both == 0:
+                if sa1 == 2 and random.random() < 0.25:
+                    print("Character 1 activates Power Strike")
+                    h2 = power_strike(ap1, dp2, h2)
+                    check = 1
+                if sa2 == 1 and random.random() < 0.25 and check == 0:
+                    print("Character 2 activates Damage Reduction")
+                    h2 = damage_reduction(ap1, dp2, h2)
+                    check = 1
+                if sa2 == 3 and random.random() < 0.25 and h2 < 30 and check == 0:
+                    print("Character 2 activates Second Wind")
+                    h2 = second_wind(ap1, dp2, h2)
+                    check = 1
+                # Ultimate Attack
+                if sa1 == 4 and random.random() < 0.01 and check == 0:
+                    print("Character 1 activates Ultimate Attack")
+                    h2 = ultimate_attack(h2)
+                    check = 1
+
+            if check == 0 and check_both == 0:
+                print("No ability activated")
+                h2 = turns(ap1, dp2, h2)
+            else:
+                check = 0
+                check_both = 0
+
+            print(f"Character 2 has {h2} health")
             print()
             n += 1
 
@@ -361,186 +290,6 @@ def setup_per_round():
     check_both = 0 # verifies if the 6.25% condition is met for a combination of 2 special abilities
 
     if r == 1:
-        print(f"Round {n}:")
-        print()
-        sa1 = special_ability(1)
-        sa2 = special_ability(2)
-        print()
-        print("Character 1 attacks")
-
-        if sa1 == 2 and sa2 == 1 and random.random() < 0.0625:
-            print("Character 1 activates Power Strike")
-            print("Character 2 activates Damage Reduction")
-            h2 = power_reduction(ap1, dp2, h2)
-            check_both = 1
-
-        if check_both == 0:
-            if sa1 == 2 and random.random() < 0.25:
-                print("Character 1 activates Power Strike")
-                h2 = power_strike(ap1, dp2, h2)
-                check = 1
-            if sa2 == 1 and random.random() < 0.25 and check == 0:
-                print("Character 2 activates Damage Reduction")
-                h2 = damage_reduction(ap1, dp2, h2)
-                check = 1
-            # Ultimate Attack
-            if sa1 == 4 and random.random() < 0.01 and check == 0:
-                print("Character 1 activates Ultimate Attack")
-                h2 = ultimate_attack(h2)
-                check = 1
-
-        if check == 0 and check_both == 0:
-            print("No ability activated")
-            h2 = turns(ap1, dp2, h2)
-        else:
-            check = 0
-            check_both = 0
-
-        print(f"Character 2 has {h2} health")
-        print()
-        n += 1
-
-    else:
-        print(f"Round {n}:")
-        print()
-        sa1 = special_ability(1)
-        sa2 = special_ability(2)
-        print()
-        print("Character 2 attacks")
-
-        if sa2 == 2 and sa1 == 1 and random.random() < 0.0625:
-            print("Character 2 activates Power Strike")
-            print("Character 1 activates Damage Reduction")
-            h1 = power_reduction(ap2, dp1, h1)
-            check_both = 1
-
-        if check_both == 0:
-            if sa2 == 2 and random.random() < 0.25:
-                print("Character 2 activates Power Strike")
-                h1 = power_strike(ap2, dp1, h1)
-                check = 1
-            if sa1 == 1 and random.random() < 0.25 and check == 0:
-                print("Character 1 activates Damage Reduction")
-                h1 = damage_reduction(ap2, dp1, h1)
-                check = 1
-            # Ultimate Attack
-            if sa2 == 4 and random.random() < 0.01 and check == 0:
-                print("Character 2 activates Ultimate Attack")
-                h1 = ultimate_attack(h1)
-                check = 1
-
-        if check == 0 and check_both == 0:
-            print("No ability activated")
-            h1 = turns(ap2, dp1, h1)
-        else:
-            check = 0
-            check_both = 0
-
-        print(f"Character 1 has {h1} health")
-        print()
-        n += 1
-
-    if r == 1:
-        while h1 > 0 and h2 > 0:
-            print(f"Round {n}:")
-            print()
-            sa1 = special_ability(1)
-            sa2 = special_ability(2)
-            print()
-            print(f"Character 2 attacks")
-
-            if sa2 == 2 and sa1 == 1 and random.random() < 0.0625:
-                print("Character 2 activates Power Strike")
-                print("Character 1 activates Damage Reduction")
-                h1 = power_reduction(ap2, dp1, h1)
-                check_both = 1
-            if sa2 == 2 and sa1 == 3 and random.random() < 0.0625 and h1 < 30:
-                print("Character 2 activates Power Strike")
-                print("Character 1 activates Second Wind")
-                h1 = power_wind(ap2, dp1, h1)
-                check_both = 1
-
-            if check_both == 0:
-                if sa2 == 2 and random.random() < 0.25:
-                    print("Character 2 activates Power Strike")
-                    h1 = power_strike(ap2, dp1, h1)
-                    check = 1
-                if sa1 == 1 and random.random() < 0.25 and check == 0:
-                    print("Character 1 activates Damage Reduction")
-                    h1 = damage_reduction(ap2, dp1, h1)
-                    check = 1
-                if sa1 == 3 and random.random() < 0.25 and h1 < 30 and check == 0:
-                    print("Character 1 activates Second Wind")
-                    h1 = second_wind(ap2, dp1, h1)
-                    check = 1
-                # Ultimate Attack
-                if sa2 == 4 and random.random() < 0.01 and check == 0:
-                    print("Character 2 activates Ultimate Attack")
-                    h1 = ultimate_attack(h1)
-                    check = 1
-
-            if check == 0 and check_both == 0:
-                print("No ability activated")
-                h1 = turns(ap2, dp1, h1)
-            else:
-                check = 0
-                check_both = 0
-
-            print(f"Character 1 has {h1} health")
-            print()
-            n += 1
-
-            if h1 <= 0 or h2 <= 0:
-                break
-
-            print(f"Round {n}:")
-            print()
-            sa1 = special_ability(1)
-            sa2 = special_ability(2)
-            print()
-            print(f"Character 1 attacks")
-
-            if sa1 == 2 and sa2 == 1 and random.random() < 0.0625:
-                print("Character 1 activates Power Strike")
-                print("Character 2 activates Damage Reduction")
-                h2 = power_reduction(ap1, dp2, h2)
-                check_both = 1
-            if sa1 == 2 and sa2 == 3 and random.random() < 0.0625 and h2 < 30:
-                print("Character 1 activates Power Strike")
-                print("Character 2 activates Second Wind")
-                h2 = power_wind(ap1, dp2, h2)
-                check_both = 1
-
-            if check_both == 0:
-                if sa1 == 2 and random.random() < 0.25:
-                    print("Character 1 activates Power Strike")
-                    h2 = power_strike(ap1, dp2, h2)
-                    check = 1
-                if sa2 == 1 and random.random() < 0.25 and check == 0:
-                    print("Character 2 activates Damage Reduction")
-                    h2 = damage_reduction(ap1, dp2, h2)
-                    check = 1
-                if sa2 == 3 and random.random() < 0.25 and h2 < 30 and check == 0:
-                    print("Character 2 activates Second Wind")
-                    h2 = second_wind(ap1, dp2, h2)
-                    check = 1
-                # Ultimate Attack
-                if sa1 == 4 and random.random() < 0.01 and check == 0:
-                    print("Character 1 activates Ultimate Attack")
-                    h2 = ultimate_attack(h2)
-                    check = 1
-
-            if check == 0 and check_both == 0:
-                print("No ability activated")
-                h2 = turns(ap1, dp2, h2)
-            else:
-                check = 0
-                check_both = 0
-
-            print(f"Character 2 has {h2} health")
-            print()
-            n += 1
-    else:
         while h1 > 0 and h2 > 0:
             print(f"Round {n}:")
             print()
@@ -638,6 +387,107 @@ def setup_per_round():
                 check_both = 0
 
             print(f"Character 1 has {h1} health")
+            print()
+            n += 1
+
+    else:
+        while h1 > 0 and h2 > 0:
+            print(f"Round {n}:")
+            print()
+            sa1 = special_ability(1)
+            sa2 = special_ability(2)
+            print()
+            print(f"Character 2 attacks")
+
+            if sa2 == 2 and sa1 == 1 and random.random() < 0.0625:
+                print("Character 2 activates Power Strike")
+                print("Character 1 activates Damage Reduction")
+                h1 = power_reduction(ap2, dp1, h1)
+                check_both = 1
+            if sa2 == 2 and sa1 == 3 and random.random() < 0.0625 and h1 < 30:
+                print("Character 2 activates Power Strike")
+                print("Character 1 activates Second Wind")
+                h1 = power_wind(ap2, dp1, h1)
+                check_both = 1
+
+            if check_both == 0:
+                if sa2 == 2 and random.random() < 0.25:
+                    print("Character 2 activates Power Strike")
+                    h1 = power_strike(ap2, dp1, h1)
+                    check = 1
+                if sa1 == 1 and random.random() < 0.25 and check == 0:
+                    print("Character 1 activates Damage Reduction")
+                    h1 = damage_reduction(ap2, dp1, h1)
+                    check = 1
+                if sa1 == 3 and random.random() < 0.25 and h1 < 30 and check == 0:
+                    print("Character 1 activates Second Wind")
+                    h1 = second_wind(ap2, dp1, h1)
+                    check = 1
+                # Ultimate Attack
+                if sa2 == 4 and random.random() < 0.01 and check == 0:
+                    print("Character 2 activates Ultimate Attack")
+                    h1 = ultimate_attack(h1)
+                    check = 1
+
+            if check == 0 and check_both == 0:
+                print("No ability activated")
+                h1 = turns(ap2, dp1, h1)
+            else:
+                check = 0
+                check_both = 0
+
+            print(f"Character 1 has {h1} health")
+            print()
+            n += 1
+
+            if h1 <= 0 or h2 <= 0:
+                break
+
+            print(f"Round {n}:")
+            print()
+            sa1 = special_ability(1)
+            sa2 = special_ability(2)
+            print()
+            print(f"Character 1 attacks")
+
+            if sa1 == 2 and sa2 == 1 and random.random() < 0.0625:
+                print("Character 1 activates Power Strike")
+                print("Character 2 activates Damage Reduction")
+                h2 = power_reduction(ap1, dp2, h2)
+                check_both = 1
+            if sa1 == 2 and sa2 == 3 and random.random() < 0.0625 and h2 < 30:
+                print("Character 1 activates Power Strike")
+                print("Character 2 activates Second Wind")
+                h2 = power_wind(ap1, dp2, h2)
+                check_both = 1
+
+            if check_both == 0:
+                if sa1 == 2 and random.random() < 0.25:
+                    print("Character 1 activates Power Strike")
+                    h2 = power_strike(ap1, dp2, h2)
+                    check = 1
+                if sa2 == 1 and random.random() < 0.25 and check == 0:
+                    print("Character 2 activates Damage Reduction")
+                    h2 = damage_reduction(ap1, dp2, h2)
+                    check = 1
+                if sa2 == 3 and random.random() < 0.25 and h2 < 30 and check == 0:
+                    print("Character 2 activates Second Wind")
+                    h2 = second_wind(ap1, dp2, h2)
+                    check = 1
+                # Ultimate Attack
+                if sa1 == 4 and random.random() < 0.01 and check == 0:
+                    print("Character 1 activates Ultimate Attack")
+                    h2 = ultimate_attack(h2)
+                    check = 1
+
+            if check == 0 and check_both == 0:
+                print("No ability activated")
+                h2 = turns(ap1, dp2, h2)
+            else:
+                check = 0
+                check_both = 0
+
+            print(f"Character 2 has {h2} health")
             print()
             n += 1
 
